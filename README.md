@@ -1,6 +1,4 @@
-# Local setup
-
-## Client
+## How to deploy?
 
 Install node and yarn
 
@@ -12,7 +10,3 @@ After use comand
 
 `yarn update`
 
-
-#
-
-## Server
