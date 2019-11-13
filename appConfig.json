@@ -1,0 +1,5 @@
+{
+  "name": "boardName",
+  "awsAdminProfile": "default",
+  "awsRegion": "us-west-2"
+}

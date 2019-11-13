@@ -1,0 +1,136 @@
+.belt-conveyor{
+  background-image: url(/statics/beltConveyor/allBack.svg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-top: 50%;
+  box-sizing: content-box;
+  overflow: overlay;
+}
+@media only screen and (max-width: 1023px) {
+  .belt-conveyor {
+  padding-top: 60%;
+  min-width: 500px;
+  }
+}
+
+.wheel-container{
+  left: 0;
+  top: 0;
+  width: 94.9%;
+  padding-top: 6.3%;
+  /* background-color: rgb(170, 248, 192); */
+  perspective: 500px;
+  margin-left: 2.6%;
+  margin-top: 36.7%;
+  position: absolute;
+}
+.belt-speed-controller{
+    left: 0;
+    top: 0;
+    width: 43.9%;
+    padding-top: 6.3%;
+    /* background-color: rgb(170, 248, 192); */
+    perspective: 500px;
+    margin-left: 33.6%;
+    margin-top: 44.7%;
+    position: absolute;
+}
+.belt-title-container{
+  left: 0;
+  top: 0;
+  width: 94.9%;
+  padding-top: 6.3%;
+  /* background-color: rgb(170, 248, 192); */
+  perspective: 500px;
+  margin-left: 2.6%;
+  margin-top: 41.7%;
+  position: absolute;
+}
+.confidence-gauge{
+  left: 0;
+  top: 0;
+  width: 4.2%;
+  perspective: 500px;
+  margin-left: 26.31%;
+  margin-top: 9.13%;
+  position: absolute;
+  transform-origin: top right;
+}
+.pasta-count-gauge{
+  left: 0;
+  top: 0;
+  width: 4.2%;
+  perspective: 500px;
+  margin-left: 67.41%;
+  margin-top: 25.93%;
+  position: absolute;
+  transform-origin: top right;
+}
+
+.belt-speed-gauge{
+  left: 0;
+  top: 0;
+  width: 4.2%;
+  perspective: 500px;
+  margin-left: 15.71%;
+  margin-top: 49.93%;
+  position: absolute;
+  transform-origin: top right;
+}
+.led-light{
+  left: 0;
+  top: 0;
+  width: 7.2%;
+  perspective: 500px;
+  margin-left: 67.71%;
+  margin-top: 0.93%;
+  position: absolute;
+  transform-origin: top right;
+}
+.led-brightnetss-controller{
+    left: 0;
+    top: 0;
+    width: 21.2%;
+    perspective: 500px;
+    margin-left: 68.71%;
+    margin-top: 11.93%;
+    position: absolute;
+    transform-origin: top right;
+}
+.gauge{
+  transition-property: all;
+  transition-duration: 1s;
+}
+.belt-wheel-left{
+  animation-name: 'spin';
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  width: 6%;
+  position: absolute;
+  top: 10%;
+}
+.belt-wheel-right{
+  animation-name: 'spin';
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  width: 6%;
+  position: absolute;
+  top: 10%;
+  right: 0px;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

@@ -1,0 +1,14 @@
+node_modules
+build
+config
+.cloudFormation
+cfTemplate.json
+dist
+secrets.js
+.idea/
+AWSCredentials.txt
+webpackCompressedFilenames.js
+config
+yarn-error.log
+.vscode
+/**/.vscode

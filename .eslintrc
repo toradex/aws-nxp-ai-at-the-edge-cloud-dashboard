@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "rules": {
+    "object-curly-newline": 0,
+    "semi": [
+      2,
+      "never"
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info"
+        ]
+      }
+    ],
+    "no-unused-vars": ["error", {
+      "vars": "all",
+      "args": "after-used"
+    }],
+    "allowIndentationTabs": true,
+    "allowEmptyReject": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "package-name-import": {}
+    }
+  }
+}

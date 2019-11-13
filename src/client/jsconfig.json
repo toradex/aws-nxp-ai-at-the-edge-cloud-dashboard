@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@root/*": ["./../../*"],
+      "@shared/*": ["./../shared/*"],
+      "@module1/*": ["./src/domains/module1/*"]
+    }
+  }
+}

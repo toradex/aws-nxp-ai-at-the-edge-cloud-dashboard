@@ -1,0 +1,9 @@
+export const actionIds = {
+  GET_DEVICE_DATA: 'GET_DEVICE_DATA',
+  RESET_DEVICE_DATA: 'RESET_DEVICE_DATA'
+}
+
+export const mutationIds = {
+  UPDATE_DEVICE_DATA: 'UPDATE_DEVICE_DATA',
+  SELECT_BOARD: 'SELECT_BOARD'
+}
