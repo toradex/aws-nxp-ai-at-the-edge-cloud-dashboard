@@ -1,5 +1,5 @@
 {
-  "name": "boardName",
-  "awsAdminProfile": "default",
+  "name": "pastaDemo",
+  "awsAdminProfile": "pastaDemo",
   "awsRegion": "us-west-2"
 }

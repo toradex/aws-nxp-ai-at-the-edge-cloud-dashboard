@@ -99,7 +99,7 @@
         <q-page-container>
 
             <div class="row items-center q-px-sm q-py-md justify-end">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-10">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-10" >
                     <q-select
                         bg-color="rgb(241, 248, 233)"
                         rounded
@@ -114,8 +114,12 @@
                                 size="xs"
                                 name="brightness_1"
                                 style="font-size:15px"
+																v-if="deviceStatus != -1"
                                 :color="deviceStatus ? 'green' : 'red'"
                             />
+														<q-inner-loading class="loading-device-status" v-else :showing="deviceStatus == -1">
+															<q-spinner-ios color="primary" size="20px" />
+														</q-inner-loading>
                         </template>
                         <template v-slot:option="scope">
                             <q-item
@@ -130,8 +134,12 @@
                                         size="xs"
                                         name="brightness_1"
                                         style="font-size:15px"
+																				v-if="deviceStatusByBoardID(scope.opt) != -1"
                                         :color="deviceStatusByBoardID(scope.opt) ? 'green' : 'red'"
                                     />
+																		<q-inner-loading class="loading-device-status" v-else :showing="deviceStatusByBoardID(scope.opt) == -1">
+																			<q-spinner-ios color="primary" size="20px" />
+																		</q-inner-loading>
                                 </q-item-section>
                             </q-item>
                         </template>

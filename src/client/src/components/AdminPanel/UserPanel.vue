@@ -166,7 +166,7 @@ export default {
             this.userDeviceDatas.forEach((userDeviceData) => {
                 if (userDeviceData.sk == this.selectedUserId) devices = userDeviceData.allowDevices
             })
-            this.selectedOptions = devices ? split(',', devices).map((device) => `Board-${device}`) : []
+            this.selectedOptions = (devices && devices != ',') ? split(',', devices).map((device) => `Board-${device}`) : []
         },
         updateDevicesForUser: async function () {
             this.visible = true

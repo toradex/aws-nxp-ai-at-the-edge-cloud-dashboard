@@ -1,34 +1,12 @@
-import {
-  TABLE_NAME,
-  documentClient
-} from 'root/src/server/util/dynamoClient'
-import {
-  PARTITION_KEY,
-} from 'root/src/shared/constants/apiDynamoIndexes'
-import {
-  dynamoItemsProp,
-} from 'root/src/shared/descriptions/apiLenses'
+import getAllBoardDatas from 'root/src/server/api/actionUtils/getAllBoardDatas'
+import getAllUserDatas from 'root/src/server/api/actionUtils/getAllUserDatas'
 
 export default async () => {
-  const allBoards = await documentClient.query({
-    TableName: TABLE_NAME,
-    KeyConditionExpression: `${PARTITION_KEY} = :pk`,
-    ExpressionAttributeValues: {
-      ':pk': 'board-detail'
-    },
-  })
 
-  const userDatas = await documentClient.query({
-    TableName: TABLE_NAME,
-    KeyConditionExpression: `${PARTITION_KEY} = :pk`,
-    ExpressionAttributeValues: {
-      ':pk': 'user-data'
-    },
-  })
-
-
+	const allBoards = await getAllBoardDatas()
+	const userDatas = await getAllUserDatas()
   return {
-    allBoards: dynamoItemsProp(allBoards),
-    userDatas: dynamoItemsProp(userDatas),
+    allBoards,
+    userDatas,
   }
 }

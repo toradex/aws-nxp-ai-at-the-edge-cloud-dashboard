@@ -7,7 +7,8 @@ import {
   map,
   max,
   prop,
-  propOr
+	propOr,
+	has
 } from 'ramda'
 import pastaTypes from '@root/src/shared/constants/pastaTypes'
 import {
@@ -29,7 +30,7 @@ export default {
   },
   getSelectedBoard(state) {
     if (state.selectedBoard) return state.selectedBoard
-    if (!length(state.allBoard)) return 0
+    if (!length(state.allBoard)) return 'None'
     return `Board-${head(keys(state.allBoard))}`
   },
   getLastUpateTime(state, getters) {
@@ -74,10 +75,10 @@ export default {
     return max(1, pathOr(1, [getters.getSelectedBoard, INFERENCE.id, 'inference-time-count'], state.averageDeviceData))
   },
   deviceStatus(state, getters) {
-    return propOr(0, getters.getSelectedBoard, state.cntNotReceived) < 2
+    return has(getters.getSelectedBoard, state.cntNotReceived) ? prop(getters.getSelectedBoard, state.cntNotReceived) < 2 : -1
   },
   deviceStatusByBoardID(state) {
-    return (boardId) => propOr(0, boardId, state.cntNotReceived) < 2
+    return (boardId) => has(boardId, state.cntNotReceived) ? propOr(0, boardId, state.cntNotReceived) < 2 : -1
   },
   getPastaCountInMin(state, getters) {
     return sum(getters.getAveragePastaCount) * 30 / getters.getInferenceTimeCount

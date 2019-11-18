@@ -85,26 +85,30 @@ const updateBoardData = (state, newBoardData) => {
     if (!state.selectedBoard) {
       state.selectedBoard = boardId
     }
-    if (pathOr('0', [boardId, 'last-updated-time'], state.allBoard) == propOr('0', 'last-updated-time', board)) {
-      state.allBoard = {
-        ...state.allBoard,
-        [boardId]: board
-      }
-
-      state.cntNotReceived = {
-        ...state.cntNotReceived,
-        [boardId]: +(propOr(0, boardId, state.cntNotReceived)) + 1
-      }
+    if (pathOr('0', [boardId, 'last-updated-time'], state.allBoard) >= propOr('0', 'last-updated-time', board)) {
+			if (pathOr(0, [boardId, 'last-updated-time'], state.allBoard)){
+				state.cntNotReceived = {
+          ...state.cntNotReceived,
+          [boardId]: 2
+				}
+			}else {
+				state.cntNotReceived = {
+					...state.cntNotReceived,
+					[boardId]: +(propOr(0, boardId, state.cntNotReceived)) + 1
+				}
+			}
     } else {
-      state.allBoard = {
-        ...state.allBoard,
-        [boardId]: board
-      }
-      state.cntNotReceived = {
-        ...state.cntNotReceived,
-        [boardId]: 0
-      }
-    }
+			if (pathOr(0, [boardId, 'last-updated-time'], state.allBoard)){
+				state.cntNotReceived = {
+          ...state.cntNotReceived,
+          [boardId]: 0
+				}
+			}
+		}
+		state.allBoard = {
+			...state.allBoard,
+			[boardId]: board
+		}
   }, newBoardData)
 
 }

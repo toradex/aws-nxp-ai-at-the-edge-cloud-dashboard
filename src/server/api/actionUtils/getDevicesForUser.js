@@ -9,13 +9,15 @@ import {
 import {
   dynamoItemsProp,
 } from 'root/src/shared/descriptions/apiLenses'
+import getAllBoardData from './getAllBoardDatas'
 
 import {
   head,
   propOr,
   split,
   length,
-  filter
+	filter,
+	map
 } from 'ramda'
 import {
   getTail
@@ -31,10 +33,21 @@ export default async (userId) => {
       ':pk': 'user-data',
       ':sk': realUserId
     },
-  })
+	})
 
-  const devicesForUser = filter((element) => length(element),
-    split(',', propOr('', 'allowDevices', head(dynamoItemsProp(userDatasDdb))))
-  )
+	const allBoardData = await getAllBoardData()
+
+	console.log(allBoardData, 'all board data')
+	let devicesForUser = []
+	if (length(dynamoItemsProp(userDatasDdb))){
+		devicesForUser = filter((element) => length(element) && element != ',',
+      split(',', propOr('', 'allowDevices', head(dynamoItemsProp(userDatasDdb))))
+		)
+	} else {
+		devicesForUser = map(board => propOr('none', 'sk', board), allBoardData)
+	}
+
+	console.log(userDatasDdb, 'user board data')
+
   return devicesForUser
 }
