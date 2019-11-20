@@ -65,9 +65,9 @@ const routes = [{
       }
 
     }, {
-      path: 'admin-panel',
-      component: () => import('~/pages/Dashboard/AdminPanel.vue'),
-      name: 'dashboard.admin-panel',
+      path: 'config-panel',
+      component: () => import('~/pages/Dashboard/ConfigPanel.vue'),
+      name: 'dashboard.config-panel',
       meta: {
         title: 'Admin Panel',
         authType: admin

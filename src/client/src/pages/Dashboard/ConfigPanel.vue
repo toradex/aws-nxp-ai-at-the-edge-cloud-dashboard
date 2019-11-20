@@ -10,12 +10,13 @@
                     narrow-indicator
                 >
                     <q-tab
-                        name="userPanel"
-                        label="Manage Users"
-                    />
-                    <q-tab
                         name="devicePanel"
                         label="Manage Devices"
+                    />
+                    <q-tab
+                        name="userPanel"
+                        label="Manage Users"
+												:disable="!isRightAuthentication(admin)"
                     />
                 </q-tabs>
 
@@ -51,23 +52,25 @@ import {
 import {
     pathOr
 } from 'ramda'
-import UserPanel from '~/components/AdminPanel/UserPanel'
-import DevicePanel from '~/components/AdminPanel/DevicePanel'
+import UserPanel from '~/components/ConfigPanel/UserPanel'
+import DevicePanel from '~/components/ConfigPanel/DevicePanel'
+import { admin } from '@root/src/shared/constants/authenticationTypes'
 
 export default {
-    name: 'AdminPanel',
+    name: 'ConfigPanel',
     components: {
         UserPanel, DevicePanel
     },
     data() {
         return {
-            tab: 'userPanel'
+						tab: 'devicePanel',
+						admin
         }
     },
     computed: {
         ...mapGetters('userdata', [
-            'username', 'error'
-        ]),
+            'username', 'error', 'isRightAuthentication'
+				]),
     },
 }
 

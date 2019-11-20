@@ -63,7 +63,8 @@ module.exports = function () {
         'QSpace',
         'QCardActions',
 				'QSlider',
-				'QSpinnerIos'
+				'QSpinnerIos',
+				'QPopupEdit'
       ],
 
       directives: [

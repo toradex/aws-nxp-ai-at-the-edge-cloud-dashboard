@@ -3,7 +3,7 @@ import outputs from '@root/cfOutput'
 import {
   AuthService
 } from '~/services/auth'
-
+import showNotify from '~/utils/showNotify'
 const {
   apiFunctionArn,
 } = outputs
@@ -18,5 +18,9 @@ export default async (endpointId, payload) => {
     } : {}),
   }
   const apiFunction = apiFunctionArn
-  return invokeLambda(apiFunction, lambdaPayload)
+	const res = await invokeLambda(apiFunction, lambdaPayload)
+	if ( res.statusCode != 200 ){
+		showNotify(res.generalErrors)
+	}
+	return res
 }

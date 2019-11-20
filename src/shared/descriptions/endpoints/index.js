@@ -8,6 +8,7 @@ import getBoardData from 'root/src/shared/descriptions/endpoints/getBoardData'
 import updateUserData from 'root/src/shared/descriptions/endpoints/updateUserData'
 import updateBeltSpeed from 'root/src/shared/descriptions/endpoints/updateBeltSpeed'
 import updateLedBrightness from 'root/src/shared/descriptions/endpoints/updateLedBrightness'
+import updateBoardAlias from 'root/src/shared/descriptions/endpoints/updateBoardAlias'
 
 const allEndpoints = {
   ...getDeviceData,
@@ -17,7 +18,8 @@ const allEndpoints = {
   ...getBoardData,
   ...updateUserData,
   ...updateBeltSpeed,
-  ...updateLedBrightness
+	...updateLedBrightness,
+	...updateBoardAlias
 }
 
 export default map(

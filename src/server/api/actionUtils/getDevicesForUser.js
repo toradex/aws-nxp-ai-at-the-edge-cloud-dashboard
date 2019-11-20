@@ -36,8 +36,6 @@ export default async (userId) => {
 	})
 
 	const allBoardData = await getAllBoardData()
-
-	console.log(allBoardData, 'all board data')
 	let devicesForUser = []
 	if (length(dynamoItemsProp(userDatasDdb))){
 		devicesForUser = filter((element) => length(element) && element != ',',
@@ -46,8 +44,5 @@ export default async (userId) => {
 	} else {
 		devicesForUser = map(board => propOr('none', 'sk', board), allBoardData)
 	}
-
-	console.log(userDatasDdb, 'user board data')
-
   return devicesForUser
 }

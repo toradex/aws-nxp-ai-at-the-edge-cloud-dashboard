@@ -28,11 +28,14 @@ export default {
   getAverageCPUData(state, getters) {
     return (field) => pathOr(0, [getters.getSelectedBoard, CPU.id, field], state.averageDeviceData) / getters.getHistoryCount
   },
-  getSelectedBoard(state) {
+  getSelectedBoard(state, getters) {
     if (state.selectedBoard) return state.selectedBoard
     if (!length(state.allBoard)) return 'None'
-    return `Board-${head(keys(state.allBoard))}`
+    return `Board-${head(getters.getAllBoards)}`
   },
+  getBoardAlias(state) {
+		return (boardId) => pathOr(`Board-${boardId}`, [boardId, 'alias'], state.allBoard)
+	},
   getLastUpateTime(state, getters) {
     const utcTime = pathOr(null, [getters.getSelectedBoard, 'last-updated-time'], state.allBoard)
     if (utcTime) {
@@ -78,7 +81,9 @@ export default {
     return has(getters.getSelectedBoard, state.cntNotReceived) ? prop(getters.getSelectedBoard, state.cntNotReceived) < 2 : -1
   },
   deviceStatusByBoardID(state) {
-    return (boardId) => has(boardId, state.cntNotReceived) ? propOr(0, boardId, state.cntNotReceived) < 2 : -1
+		return (boardId) => {
+			return has(boardId, state.cntNotReceived) ? propOr(0, boardId, state.cntNotReceived) < 2 : -1
+		}
   },
   getPastaCountInMin(state, getters) {
     return sum(getters.getAveragePastaCount) * 30 / getters.getInferenceTimeCount

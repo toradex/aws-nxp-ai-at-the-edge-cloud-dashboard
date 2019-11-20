@@ -81,7 +81,7 @@ const updateState = (state, data) => {
 
 const updateBoardData = (state, newBoardData) => {
   map((board) => {
-    const boardId = `Board-${board.sk}`
+    const boardId = board.sk
     if (!state.selectedBoard) {
       state.selectedBoard = boardId
     }

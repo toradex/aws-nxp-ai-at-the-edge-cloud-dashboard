@@ -127,7 +127,7 @@
                                 v-on="scope.itemEvents"
                             >
                                 <q-item-section>
-                                    <q-item-label v-html="scope.opt" />
+                                    <q-item-label v-html="getBoardAlias(scope.opt)" />
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-icon
@@ -203,9 +203,9 @@
                             exact
                         />
                         <q-route-tab
-                            icon="fas fa-share-alt-square"
-                            to="conveyar-status"
-                            label="Conveyor Belt Status"
+                            icon="fas fa-users-cog"
+                            to="config-panel"
+                            label="Configurations"
                             exact
                         />
                     </q-tabs>
@@ -237,9 +237,8 @@
                         />
                         <q-route-tab
                             icon="fas fa-users-cog"
-                            to="admin-panel"
-                            label="Admin Panel"
-                            :disable="!isRightAuthentication(admin)"
+                            to="config-panel"
+                            label="Configurations"
                             exact
                         />
                     </q-tabs>
@@ -315,7 +314,11 @@ export default {
         getScrollPosition,
         renderOptionForDevice(val) {
             debugger
-        }
+				},
+				test(val){
+					console.log(val)
+					return `Board-${val}`
+				}
     },
     beforeDestroy() {
         clearInterval(this.polling)
@@ -328,11 +331,11 @@ export default {
             'fullname', 'isRightAuthentication'
         ]),
         ...mapGetters('deviceData', [
-            'deviceStatus', 'getAllBoards', 'getSelectedBoard', 'deviceStatusByBoardID'
+            'deviceStatus', 'getAllBoards', 'getSelectedBoard', 'deviceStatusByBoardID', 'getBoardAlias'
         ]),
         selectedBoardModel: {
             get() {
-                return this.getSelectedBoard
+                return {value: this.getSelectedBoard, label: this.getBoardAlias(this.getSelectedBoard)}
             },
             set(val) {
                 return this.selectBoard(val)
