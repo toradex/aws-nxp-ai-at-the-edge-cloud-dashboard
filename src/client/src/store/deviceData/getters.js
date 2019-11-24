@@ -31,7 +31,7 @@ export default {
   getSelectedBoard(state, getters) {
     if (state.selectedBoard) return state.selectedBoard
     if (!length(state.allBoard)) return 'None'
-    return `Board-${head(getters.getAllBoards)}`
+    return head(getters.getAllBoards)
   },
   getBoardAlias(state) {
 		return (boardId) => pathOr(`Board-${boardId}`, [boardId, 'alias'], state.allBoard)

@@ -7,11 +7,11 @@
                     <div class="col-10 belt-conveyor">
                         <div class="wheel-container">
                             <img
-                                class="belt-wheel-left animate-spin"
+                                :class="deviceStatus ? 'belt-wheel-left wheel-spin':'belt-wheel-left'"
                                 src="statics/beltConveyor/wheel.svg"
                             />
                             <img
-                                class="belt-wheel-right animate-spin"
+                                :class="deviceStatus ? 'belt-wheel-right wheel-spin':'belt-wheel-right'"
                                 src="statics/beltConveyor/wheel.svg"
                             />
                         </div>
@@ -112,7 +112,15 @@ import { sum, propOr, last, split } from 'ramda'
 export default {
     name: 'ConveyorBeltStatus',
     computed: {
-        ...mapGetters('deviceData', ['getMQTTData', 'getAverageConfidence', 'getPastaCountInMin', 'getBeltSpeed', 'getLedBrightness', 'getSelectedBoard']),
+        ...mapGetters('deviceData', [
+					'getMQTTData',
+					'getAverageConfidence',
+					'getPastaCountInMin',
+					'getBeltSpeed',
+					'getLedBrightness',
+					'getSelectedBoard',
+					'deviceStatus'
+				]),
         beltSpeed: {
             get() {
                 return this.getBeltSpeed

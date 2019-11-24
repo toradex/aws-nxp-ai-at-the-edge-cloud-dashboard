@@ -53,6 +53,25 @@
                                 </gauge-item>
                             </div>
                         </div>
+												<div class="row" v-if="showFilmStrip">
+													<div class="col-12 film-stripe-container">
+														<q-carousel
+															swipeable
+															animated
+															arrows
+															v-model="slide"
+															thumbnails
+															infinite
+														>
+															<q-carousel-slide :name="1" img-src="statics/boardImage/0000000201.jpg" />
+															<q-carousel-slide :name="2" img-src="statics/boardImage/0000000202.jpg" />
+															<q-carousel-slide :name="3" img-src="statics/boardImage/0000000203.jpg" />
+															<q-carousel-slide :name="4" img-src="statics/boardImage/0000000204.jpg" />
+															<q-carousel-slide :name="21" img-src="statics/boardImage/0000000206.jpg" />
+															<q-carousel-slide :name="31" img-src="statics/boardImage/0000000207.jpg" />
+														</q-carousel>
+													</div>
+												</div>
                     </div>
                 </div>
             </div>
@@ -70,11 +89,18 @@ import { mapActions, mapMutations, mapGetters } from 'vuex'
 import { maxPlus } from '@shared/util/ramdaPlus'
 import { map, assoc } from 'ramda'
 export default {
-    name: 'DeepLearningModelPerformance',
+		name: 'DeepLearningModelPerformance',
+		props: {
+			showFilmStrip: {
+				type: Boolean,
+				default: false,
+			}
+		},
     data: function () {
         return {
             SHELLS, PENNE, FARFALLE, ELBOWS,
-            pastaTypes,
+						pastaTypes,
+						slide: 1,
             options: {
                 chart: {
                     height: 350,

@@ -64,7 +64,10 @@ module.exports = function () {
         'QCardActions',
 				'QSlider',
 				'QSpinnerIos',
-				'QPopupEdit'
+				'QPopupEdit',
+				'QCarousel',
+				'QCarouselControl',
+				'QCarouselSlide'
       ],
 
       directives: [

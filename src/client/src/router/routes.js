@@ -65,6 +65,15 @@ const routes = [{
       }
 
     }, {
+      path: 'deeplearning-model-dev',
+      component: () => import('~/pages/Dashboard/DeepLearningModelPerformance.vue'),
+      name: 'dashboard.deeplearning-model',
+      meta: {
+        title: 'Deep Learning Model Performance'
+			},
+			props: {showFilmStrip: true}
+
+    }, {
       path: 'config-panel',
       component: () => import('~/pages/Dashboard/ConfigPanel.vue'),
       name: 'dashboard.config-panel',

@@ -23,7 +23,7 @@ const updateState = (state, data) => {
     pk,
     sk
   } = data
-  const boardID = `Board-${last(split('-', sk))}`
+  const boardID = last(split('-', sk))
   const nextMqttData = JSON.stringify(data, null, 4) + '\n\n' + propOr('', boardID, state.mqttDatas)
 
   state.mqttDatas = {
