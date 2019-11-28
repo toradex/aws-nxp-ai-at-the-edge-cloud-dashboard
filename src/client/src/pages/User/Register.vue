@@ -5,7 +5,7 @@
       :class="{
         'm-auto':$q.screen.gt.sm
       }"
-      style="max-width: 25rem"
+      style="max-width: 25rem;width: 350px;"
     >
       <h4 class="text-center pt-0 mt-5">
         New Account
@@ -149,23 +149,6 @@
           </template>
         </q-input>
 
-        <div class="text-left mt-">
-          <q-toggle
-            v-model="userModel.acceptTerms"
-            label="I accept the license and terms"
-          />
-          <br>
-          <q-btn
-            class="pl-0"
-            flat
-            no-caps
-            color="primary"
-            href
-          >
-            Click here to view license terms and conditions
-          </q-btn>
-        </div>
-
         <div>
           <q-btn
             :loading="loading"
@@ -209,7 +192,6 @@ export default {
 				password: '',
 				password2: '',
 				remember: false,
-				acceptTerms: false,
 				data: {}
 			},
 			emailRegex: new RegExp(

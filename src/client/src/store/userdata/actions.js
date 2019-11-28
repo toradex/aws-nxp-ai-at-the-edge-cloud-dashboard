@@ -41,11 +41,6 @@ export default {
   }, userData) {
     commit(mutationIds.SET_LOADING, true)
     try {
-      if (!userData.acceptTerms) {
-        throw {
-          message: 'You must accept the license and terms to continue'
-        }
-      }
       const result = await AuthService.signUp(userData)
       commit(mutationIds.SAVE_USERDATA, {
         userSub: result.userSub,
