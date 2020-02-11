@@ -51,7 +51,7 @@ export const apiResources = {
       Environment,
       Role: getAtt(API_LAMBDA_EXECUTION_ROLE, 'Arn'),
       MemorySize: 1024,
-      Runtime: 'nodejs8.10',
+      Runtime: 'nodejs12.x',
       Timeout: 10
     }
   },
